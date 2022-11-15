@@ -35,7 +35,7 @@ class MagazineDataSource {
 
   ///Delete data from magazine table using id
   Future<String> deleteMagazine(String magazineId) async {
-    final sqlQuery = 'DELETE tbl_magazine WHERE id=$magazineId;';
+    final sqlQuery = 'DELETE FROM tbl_magazine WHERE id=$magazineId;';
     final result = await sqlClient.execute(sqlQuery);
     const magazine = 'Deleted Successfully';
     return magazine;

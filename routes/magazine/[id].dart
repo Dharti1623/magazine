@@ -14,7 +14,8 @@ Future<Response> onRequest(RequestContext context, id) async {
       break;
     case HttpMethod.delete:
       final magazines = await dataRepository.deleteMagazine(id.toString());
-      return Response.json(body: {'data': magazines});
+      return Response.json(body: {'message': magazines});
+      break;
     case HttpMethod.get:
       final magazines = await dataRepository.getMagazine(id.toString());
       return Response.json(body: {'data': magazines});
