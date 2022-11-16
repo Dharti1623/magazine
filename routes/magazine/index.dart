@@ -12,10 +12,8 @@ Future<Response> onRequest(RequestContext context) async {
     case HttpMethod.options:
     case HttpMethod.patch:
       return Response.json(body: {'message': 'Method not found'});
-      break;
     case HttpMethod.get:
       final magazines = await dataRepository.getMagazines();
       return Response.json(body: {'data': magazines});
-      break;
   }
 }

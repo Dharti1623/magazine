@@ -24,7 +24,7 @@ class MagazineDataSource {
   ///Fetches data from magazine table using id
 
   Future<List<MagazineDatabaseModel>> getMagazine(String magazineId) async {
-    final sqlQuery = 'SELECT * FROM tbl_magazine WHERE id=$magazineId;';
+    final sqlQuery = 'SELECT * FROM tbl_magazine WHERE magazine_id=$magazineId;';
     final result = await sqlClient.execute(sqlQuery);
     final magazine = <MagazineDatabaseModel>[];
     for (final row in result.rows) {
@@ -35,10 +35,9 @@ class MagazineDataSource {
 
   ///Delete data from magazine table using id
   Future<String> deleteMagazine(String magazineId) async {
-    final sqlQuery = 'DELETE FROM tbl_magazine WHERE id=$magazineId;';
-    final result = await sqlClient.execute(sqlQuery);
-    const magazine = 'Deleted Successfully';
-    return magazine;
+    final sqlQuery = 'DELETE FROM tbl_magazine WHERE magazine_id=$magazineId;';
+    await sqlClient.execute(sqlQuery);
+    return 'Deleted Successfully';
   }
   /// accessing you client
   final MySQLClient sqlClient;
